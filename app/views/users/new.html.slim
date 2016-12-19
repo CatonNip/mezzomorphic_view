@@ -1,6 +1,7 @@
 h2 Please Register
     
-= form_tag('/users', method:'POST') do  #action="/users" method="POST"
+= form_tag('/users', method:'POST') do |f|
+
   label Name: 
   input type='text' name='user[name]' placeholder='Name'
 

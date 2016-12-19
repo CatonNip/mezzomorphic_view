@@ -1,10 +1,11 @@
 h2 Please Register
     
-form action='/' 
+= form_tag("/users/#{@id}", method:'PUT') do |f|
+
   label Name: 
-  input type='text' name='name' value="#{@user[:name]}"
+  input type='text' name='user[name]' value="#{@user['name']}"
 
   label Email: 
-  input type='text' name='email' value="#{@user[:email]}"
+  input type='text' name='user[email]' value="#{@user['email']}"
   br
   input type="submit" value="Register"

@@ -4,7 +4,6 @@ class UsersController < ApplicationController
     response = HTTParty.get("http://localhost:3000/users/#{params[:id]}")
     response_hash = JSON.parse(response.body)
     @user = response_hash["data"]["attributes"]
-    p @user
   end
   
   def new
@@ -21,12 +20,6 @@ class UsersController < ApplicationController
       :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'}
     })
 
-    # p 'RESPONSE'
-    # p response.body
-    # p response.code
-    # p response.message
-    # p response.headers.inspect
-
     if response.code == 201
       #add user auth with devise.
       response_hash =JSON.parse(response.body)
@@ -39,7 +32,32 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = {name: "AlextheMaxel", email: "alex@vivi", password: "password"}
+    response = HTTParty.get("http://localhost:3000/users/#{params[:id]}")
+    response_hash = JSON.parse(response.body)
+    @user = response_hash["data"]["attributes"]
+    @id = response_hash["data"]["id"]
+  end
+
+  def update
+    user_input = user_params
+    response = HTTParty.put("http://localhost:3000/users/#{params[:id]}",
+    {
+      :body => {'user' => 
+                {'name' => user_input[:name], 'email' => user_input[:email]}
+                }.to_json,
+      :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'}
+
+    })
+    if response.code == 200
+      #add user auth with devise.
+      redirect_to user_path(params[:id])
+    else
+      redirect_to "/users/#{params[:id]}/edit"  
+    end   
+    # p response.headers.inspect
+    # p response.body
+    # p response.code
+    # p response.message
 
   end
 
