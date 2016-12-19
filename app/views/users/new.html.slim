@@ -1,13 +1,13 @@
 h2 Please Register
     
-form action='/' 
+= form_tag('/users', method:'POST') do  #action="/users" method="POST"
   label Name: 
-  input type='text' name='name' placeholder='Name'
+  input type='text' name='user[name]' placeholder='Name'
 
   label Email: 
-  input type='text' name='email' placeholder='Email'
+  input type='text' name='user[email]' placeholder='Email'
 
   label Password: 
-  input type='password' name='password' placeholder='Password'
+  input type='password' name='user[password]' placeholder='Password'
   br
   input type="submit" value="Register"
