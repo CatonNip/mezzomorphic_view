@@ -12,6 +12,8 @@ class UsersController < ApplicationController
   end
   
   def edit
+    @user = {name: "AlextheMaxel", email: "alex@vivi", password: "password"}
+
   end
 
 

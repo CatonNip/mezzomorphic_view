@@ -1,0 +1,11 @@
+
+h2 EDIT CHANNEL
+    
+form action='/' 
+  label Name: 
+  input type='text' name='name' placeholder='Name' value="#{@channel[:name]}"
+
+  label description: 
+  input type='textarea' name='description' placeholder='what is your channel about' value="#{@channel[:description]}"
+
+a href="/channels" upload here
