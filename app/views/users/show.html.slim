@@ -1,0 +1,8 @@
+h1 = @user[:name]
+h1 = @user[:email]
+
+ul 
+  - @user[:channels].each do |channel| 
+    li  = channel[:name]
+    li  = channel[:description]
+    li  = channel[:inputs]
