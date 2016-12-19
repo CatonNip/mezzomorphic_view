@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     response = HTTParty.get("http://localhost:3000/users/#{params[:id]}")
     response_hash = JSON.parse(response.body)
     @user = response_hash["data"]["attributes"]
-
+    p @user
   end
   
   def new
