@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   
   def show
-    @channel = {name:"Blip", description:"our baby", inputs:"blip.wav"}
-    @user = {name: "AlextheMaxel", email: "alex@vivi", password: "password", channels: [@channel]}
+    response = HTTParty.get("http://localhost:3000/users/#{params[:id]}")
+    response_hash = JSON.parse(response.body)
+    @user = response_hash["data"]["attributes"]
 
   end
   
@@ -20,11 +21,11 @@ class UsersController < ApplicationController
       :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'}
     })
 
-    p 'RESPONSE'
-    p response.body
-    p response.code
-    p response.message
-    p response.headers.inspect
+    # p 'RESPONSE'
+    # p response.body
+    # p response.code
+    # p response.message
+    # p response.headers.inspect
 
     if response.code == 201
       #add user auth with devise.
