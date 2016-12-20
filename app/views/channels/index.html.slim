@@ -2,6 +2,5 @@ h1 Our Cool Channels
 
 ul 
   - @channels.each do |channel|
-    li = channel[:name]
-    li = channel[:description]
-    li = channel[:inputs]
+    li = channel["attributes"]["name"]
+    li = channel["attributes"]["description"]

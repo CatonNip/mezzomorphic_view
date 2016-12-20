@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @user = JSON.parse(response.body)
     
     # p response_hash
-    p @user
+    # p @user
   end
   
   def new
