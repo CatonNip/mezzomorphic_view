@@ -6,7 +6,8 @@ class ChannelsController < ApplicationController
   end
   
   def show
-    @channel = {name:"Blip", description:"our baby", inputs:"blip.wav"}
+    response = HTTParty.get("http://localhost:3000/channels/#{params[:id]}")
+    @channels = JSON.parse(response.body)
 
   end
   
