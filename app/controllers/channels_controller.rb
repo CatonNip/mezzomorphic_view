@@ -4,7 +4,7 @@ class ChannelsController < ApplicationController
     response = HTTParty.get("http://localhost:3000/channels.json")
     response_hash = JSON.parse(response.body)
     @channels = response_hash["data"]
-     p @channels
+    
     # p response.headers.inspect
     # p response.message
     # p response.code
@@ -21,7 +21,18 @@ class ChannelsController < ApplicationController
   end
   
   def edit
-    @channel = {name:"Blip", description:"our baby", inputs:"blip.wav"}
+    response = HTTParty.get("http://localhost:3000/channels/#{params[:id]}")
+    response_hash = JSON.parse(response.body)
+    @channel = response_hash["data"]["attributes"]
+    @id = response_hash["data"]["id"]
+    # p response.headers.inspect
+    # p response.body
+    # p response.code
+    # p response.message
+
+  end
+
+  def update
   end
 
 
