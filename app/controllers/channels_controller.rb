@@ -13,8 +13,13 @@ class ChannelsController < ApplicationController
   
   def show
     response = HTTParty.get("http://localhost:3000/channels/#{params[:id]}")
-    @channels = JSON.parse(response.body)
+    @channel = JSON.parse(response.body)
+    p @channel
 
+    # p response.headers.inspect
+    # p response.body
+    # p response.code
+    # p response.message
   end
   
   def new

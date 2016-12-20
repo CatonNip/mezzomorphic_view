@@ -1,3 +1,5 @@
-h1 = @channel[:name]
-h1 = @channel[:description]
-h1 = @channel[:inputs]
+h1 = @channel["channel"]["name"]
+h1 = @channel["channel"]["description"]
+- @channel["inputs"].each do |input|
+  p = input["name"]
+  p = input["artist"]
