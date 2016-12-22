@@ -4,11 +4,11 @@ class InputsController < ApplicationController
 
   def create
     audio_input = input_params
-    response = HTTParty.post("http://localhost:3000/channel/#{params[:id]}",
+    response = HTTParty.post("https://mezzomorphic-backend/channel/#{params[:id]}",
     {
       :body => {'input' =>
                 {'name' => audio_input[:name], 'artist' => audio_input[:artist], 'audio' => audio_input[:audio]}}.to_json,
-      :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'}         
+      :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'}
     })
 
   end
