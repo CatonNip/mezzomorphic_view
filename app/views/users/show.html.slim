@@ -1,0 +1,15 @@
+h1 = @user["user"]["name"]
+h1 = @user["user"]["email"]
+
+- if @user["channels"]
+  ul 
+    - @user["channels"].each do |channel|
+      li  = channel["name"]
+      li  = channel["description"]
+      - if @user["inputs"]      
+        - @user["inputs"].each do |track|    
+          -if track["channel_id"] == channel["id"]
+            li = track["name"]
+            li = track["artist"]
+            li = track["url"]
+

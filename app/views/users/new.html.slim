@@ -1,0 +1,14 @@
+h2 Please Register
+    
+= form_tag('/users', method:'POST') do |f|
+
+  label Name: 
+  input type='text' name='user[name]' placeholder='Name'
+
+  label Email: 
+  input type='text' name='user[email]' placeholder='Email'
+
+  label Password: 
+  input type='password' name='user[password]' placeholder='Password'
+  br
+  input type="submit" value="Register"

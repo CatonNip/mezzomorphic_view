@@ -1,0 +1,8 @@
+h2 EDIT CHANNEL
+    
+= form_tag("/channels/#{@id}", method:'PUT') do |f| 
+  label Name: 
+  input type='text' name='name' placeholder='Name' value=""
+
+  label description: 
+  input type='textarea' name='description' placeholder='what is your channel about' value=""
